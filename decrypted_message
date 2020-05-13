@@ -1,0 +1,57 @@
+'''									 DECRYPTED MESSAGE 
+
+	This program generates an descrypted message based on the unique key.
+	
+								  ### DONT LOSE YOUR KEY!!! ###
+
+FORMAT:
+									KEY
+									OLD MESSAGE
+
+'''
+import random 
+
+print ("Thank you for using the DECRYPTED MESSAGE App!")
+print ("")
+new_alph = input("What is your key & message? ")
+old_messa = input("message?")
+print ("")
+print ("")
+print ("BEFORE: "+ old_messa)
+print ("")
+
+engl_alph =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#Reverse again
+old_messa = old_messa[::-1]
+
+#Creating the list for the dictionary
+list_dictionary = []
+
+#Populates the list with shuffled string
+for l in range (0,52):
+	
+	l = engl_alph[l] 
+	list_dictionary.append(l)
+
+
+#Creating the dictionary	 
+encr_dictionary = {}
+
+new_messa = ""
+
+flag_var = 0
+for i in new_alph:
+	encr_dictionary[i] = list_dictionary[flag_var]
+	flag_var = flag_var + 1
+
+for i in old_messa:
+	if i == ' ':
+		new_messa = new_messa + " "
+	for j in encr_dictionary:
+		if i == j:
+			new_messa = new_messa + encr_dictionary[j]
+			
+		
+print ("AFTER: "+ new_messa)
+print ("")
