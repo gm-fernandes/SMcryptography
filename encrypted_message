@@ -1,0 +1,64 @@
+'''									 ENCRYPTED MESSAGE
+
+created by: Lucky Who
+
+	This program generates a encrypted message with a unique key. This key can be used in the next
+	program to translate back to the original message.
+	
+								  ### DONT LOSE YOUR KEY!!! ###
+
+TYPE IN YOUR MESSAGE:
+
+'''
+import random 
+
+print ("Thank you for using the ENCRYPTED MESSAGE App!")
+print ("")
+old_messa = input("What is your message? ")
+print ("")
+print ("")
+print ("BEFORE: "+ old_messa)
+print ("")
+new_messa =""
+
+engl_alph =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#Shuffle string
+new_alph = ""
+new_alph = ''.join(random.sample(engl_alph,len(engl_alph)))
+
+#Creating the list for the dictionary
+list_dictionary = []
+
+#Populates the list with shuffled string
+for l in range (0,52):
+	
+	l = new_alph[l] 
+	list_dictionary.append(l)
+
+
+#Creating the dictionary	 
+encr_dictionary = {}
+
+flag_var = 0
+for i in engl_alph:
+	encr_dictionary[i] = list_dictionary[flag_var]
+	flag_var = flag_var + 1
+
+for i in old_messa:
+	if i == ' ':
+		new_messa = new_messa + " "
+	for j in encr_dictionary:
+		if i == j:
+			new_messa = new_messa + encr_dictionary[j]
+			
+#Revert the string			
+new_messa = new_messa[::-1]
+		
+print ("AFTER: "+ new_messa)
+print ("")
+print ("Your Key is:")
+new_list_m = ""
+for i in list_dictionary:
+	new_list_m = new_list_m + i
+print (new_alph)	 
